@@ -16,8 +16,12 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $owned = $request->user()->ownedProjects;
+        $member = $request->user()->projects;
         return view('profile.edit', [
             'user' => $request->user(),
+            'owned' => $owned,
+            'member' => $member,
         ]);
     }
 
